@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>调试页面</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        .section { margin: 20px 0; padding: 10px; background: white; border: 1px solid #ddd; }
+        pre { background: #333; color: #fff; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>农业机器人系统调试</h1>
+    <div id="output"></div>
+    
+    <script>
+        const output = document.getElementById('output');
+        
+        function addSection(title) {
+            const section = document.createElement('div');
+            section.className = 'section';
+            section.innerHTML = `<h2>${title}</h2>`;
+            output.appendChild(section);
+            return section;
+        }
+        
+        function log(message, type = 'info') {
+            const p = document.createElement('p');
+            p.className = type;
+            p.textContent = message;
+            output.lastChild.appendChild(p);
+        }
+        
+        function addPre(text) {
+            const pre = document.createElement('pre');
+            pre.textContent = text;
+            output.lastChild.appendChild(pre);
+        }
+        
+        async function test() {
+            const section1 = addSection('1. 检查JavaScript文件加载');
+            
+            try {
+                await loadScript('/js/config.js');
+                log('✓ config.js 加载成功', 'success');
+                if (typeof API_CONFIG !== 'undefined') {
+                    log('✓ API_CONFIG 已定义', 'success');
+                    addPre(JSON.stringify(API_CONFIG, null, 2));
+                } else {
+                    log('✗ API_CONFIG 未定义', 'error');
+                }
+            } catch (e) {
+                log('✗ config.js 加载失败: ' + e.message, 'error');
+            }
+            
+            try {
+                await loadScript('/js/api.js');
+                log('✓ api.js 加载成功', 'success');
+                if (typeof API !== 'undefined') {
+                    log('✓ API 已定义', 'success');
+                    addPre(Object.keys(API).join(', '));
+                } else {
+                    log('✗ API 未定义', 'error');
+                }
+            } catch (e) {
+                log('✗ api.js 加载失败: ' + e.message, 'error');
+            }
+            
+            const section2 = addSection('2. 测试API连接');
+            
+            try {
+                const response = await fetch(API_CONFIG.BASE_URL + '/api/health');
+                const data = await response.json();
+                log('✓ 后端连接成功', 'success');
+                addPre(JSON.stringify(data, null, 2));
+            } catch (e) {
+                log('✗ 后端连接失败: ' + e.message, 'error');
+            }
+            
+            try {
+                const response = await fetch(API_CONFIG.BASE_URL + '/api/robot/status');
+                const data = await response.json();
+                log('✓ 机器人状态获取成功', 'success');
+                addPre(JSON.stringify(data, null, 2));
+            } catch (e) {
+                log('✗ 机器人状态获取失败: ' + e.message, 'error');
+            }
+            
+            const section3 = addSection('3. 检查DOM元素');
+            
+            const elements = [
+                'systemTime', 'statusIndicator', 'statusText',
+                'batteryValue', 'speedValue', 'temperatureValue', 'coordinatesValue',
+                'soilHumidityValue', 'soilTempValue', 'lightValue', 'airHumidityValue',
+                'completedArea', 'totalArea', 'progressPercent',
+                'taskList', 'logList'
+            ];
+            
+            let allFound = true;
+            elements.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    log(`✓ ${id} 存在`, 'success');
+                } else {
+                    log(`✗ ${id} 不存在`, 'error');
+                    allFound = false;
+                }
+            });
+            
+            if (allFound) {
+                log('所有DOM元素都存在', 'success');
+            }
+            
+            const section4 = addSection('4. 建议');
+            log('如果所有测试都通过，请访问主页: http://localhost:8080/index.html', 'info');
+            log('按F12打开开发者工具，查看Console标签页中的错误信息', 'info');
+        }
+        
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = resolve;
+                script.onerror = () => reject(new Error(`Failed to load ${src}`));
+                document.head.appendChild(script);
+            });
+        }
+        
+        test();
+    </script>
+</body>
+</html>

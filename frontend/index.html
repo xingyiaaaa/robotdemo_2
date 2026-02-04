@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="农业机器人远程控制系统">
+    <title>农业机器人控制中心</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Chart.js 图表库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div id="app" class="app">
+        
+        <!-- ==================== 头部导航 ==================== -->
+        <header class="header">
+            <h1 class="header__title">农业机器人控制中心</h1>
+            <div class="header__info">
+                <time id="systemTime" class="header__time"></time>
+                <!-- 告警指示器 -->
+                <div class="header__alerts" id="alertIndicator" title="告警状态">
+                    <span class="alert-badge">0</span>
+                </div>
+                <div class="header__status">
+                    <span id="statusIndicator" class="status-dot status-dot--offline"></span>
+                    <span id="statusText">连接中...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ==================== 主内容区 ==================== -->
+        <main class="main">
+            
+            <!-- ========== 左侧面板：状态信息 ========== -->
+            <aside class="sidebar sidebar--left">
+                
+                <!-- 机器人状态 -->
+                <section class="panel" data-panel="robot-status">
+                    <h2 class="panel__title">机器人状态</h2>
+                    <ul class="data-list" id="robotStatusList">
+                        <li class="data-list__item" data-field="battery">
+                            <span class="data-list__label">电量</span>
+                            <span class="data-list__value" id="batteryValue">--</span>
+                        </li>
+                        <li class="data-list__item" data-field="speed">
+                            <span class="data-list__label">速度</span>
+                            <span class="data-list__value" id="speedValue">--</span>
+                        </li>
+                        <li class="data-list__item" data-field="temperature">
+                            <span class="data-list__label">温度</span>
+                            <span class="data-list__value" id="temperatureValue">--</span>
+                        </li>
+                        <li class="data-list__item" data-field="coordinates">
+                            <span class="data-list__label">坐标</span>
+                            <span class="data-list__value" id="coordinatesValue">--</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- 传感器数据 -->
+                <section class="panel" data-panel="sensors">
+                    <h2 class="panel__title">传感器数据</h2>
+                    <ul class="data-list" id="sensorList">
+                        <li class="data-list__item" data-sensor="soil-humidity">
+                            <span class="data-list__label">土壤湿度</span>
+                            <span class="data-list__value" id="soilHumidityValue">--</span>
+                        </li>
+                        <li class="data-list__item" data-sensor="soil-temp">
+                            <span class="data-list__label">土壤温度</span>
+                            <span class="data-list__value" id="soilTempValue">--</span>
+                        </li>
+                        <li class="data-list__item" data-sensor="light">
+                            <span class="data-list__label">光照强度</span>
+                            <span class="data-list__value" id="lightValue">--</span>
+                        </li>
+                        <li class="data-list__item" data-sensor="air-humidity">
+                            <span class="data-list__label">空气湿度</span>
+                            <span class="data-list__value" id="airHumidityValue">--</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- 电量趋势图 -->
+                <section class="panel" data-panel="battery-chart">
+                    <h2 class="panel__title">电量趋势</h2>
+                    <div class="chart-container chart-container--small">
+                        <canvas id="batteryChart"></canvas>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- ========== 中间面板：监控与控制 ========== -->
+            <section class="content">
+                
+                <!-- 视频监控 -->
+                <article class="panel" data-panel="video">
+                    <h2 class="panel__title">实时监控</h2>
+                    <div class="video-container">
+                        <div class="video-view" id="videoView">
+                            <span class="video-view__label">前视摄像头</span>
+                            <div class="video-view__placeholder">
+                                <span>视频信号加载中...</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 控制面板 -->
+                <article class="panel" data-panel="control">
+                    <h2 class="panel__title">控制面板</h2>
+                    <div class="control-area">
+                        
+                        <!-- 方向控制 -->
+                        <nav class="direction-control" aria-label="机器人方向控制">
+                            <button class="btn btn--direction" data-direction="forward" aria-label="前进">▲</button>
+                            <div class="direction-control__row">
+                                <button class="btn btn--direction" data-direction="left" aria-label="左转">◄</button>
+                                <button class="btn btn--stop" data-direction="stop" aria-label="停止">■</button>
+                                <button class="btn btn--direction" data-direction="right" aria-label="右转">►</button>
+                            </div>
+                            <button class="btn btn--direction" data-direction="backward" aria-label="后退">▼</button>
+                        </nav>
+
+                        <!-- 作业控制 -->
+                        <div class="action-control">
+                            <button class="btn btn--action" data-action="irrigation">💧 灌溉</button>
+                            <button class="btn btn--action" data-action="fertilize">🌱 施肥</button>
+                            <button class="btn btn--action" data-action="scan">📡 扫描</button>
+                            <button class="btn btn--action" data-action="harvest">🌾 收割</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 传感器趋势图 -->
+                <article class="panel" data-panel="sensor-chart">
+                    <h2 class="panel__title">传感器趋势</h2>
+                    <div class="chart-container">
+                        <canvas id="sensorChart"></canvas>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ========== 右侧面板：数据与任务 ========== -->
+            <aside class="sidebar sidebar--right">
+                
+                <!-- 告警面板 -->
+                <section class="panel panel--alerts" data-panel="alerts">
+                    <h2 class="panel__title">
+                        系统告警
+                        <span class="panel__badge" id="alertCount">0</span>
+                    </h2>
+                    <ul class="alert-list" id="alertList">
+                        <li class="alert-list__item alert-list__item--empty">暂无告警</li>
+                    </ul>
+                </section>
+
+                <!-- 作业统计 -->
+                <section class="panel" data-panel="statistics">
+                    <h2 class="panel__title">作业统计</h2>
+                    <ul class="stats-list" id="statsList">
+                        <li class="stats-list__item" data-stat="completed">
+                            <span class="stats-list__value" id="completedArea">--</span>
+                            <span class="stats-list__label">已完成(亩)</span>
+                        </li>
+                        <li class="stats-list__item" data-stat="total">
+                            <span class="stats-list__value" id="totalArea">--</span>
+                            <span class="stats-list__label">总面积(亩)</span>
+                        </li>
+                        <li class="stats-list__item" data-stat="progress">
+                            <span class="stats-list__value" id="progressPercent">--</span>
+                            <span class="stats-list__label">完成进度</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- 任务列表 -->
+                <section class="panel" data-panel="tasks">
+                    <h2 class="panel__title">任务列表</h2>
+                    <ul class="task-list" id="taskList">
+                        <!-- 任务由JS动态渲染 -->
+                    </ul>
+                </section>
+
+                <!-- 系统日志 -->
+                <section class="panel" data-panel="logs">
+                    <h2 class="panel__title">系统日志</h2>
+                    <ul class="log-list" id="logList">
+                        <!-- 日志由JS动态添加 -->
+                    </ul>
+                </section>
+            </aside>
+        </main>
+    </div>
+
+    <!-- 脚本加载顺序：配置 -> API -> 图表 -> 告警 -> 视频 -> 应用 -->
+    <script>
+        console.log('开始加载JavaScript文件...');
+    </script>
+    <script src="js/config.js"></script>
+    <script>
+        console.log('config.js 已加载, API_CONFIG:', typeof API_CONFIG !== 'undefined' ? '已定义' : '未定义');
+    </script>
+    <script src="js/api.js"></script>
+    <script>
+        console.log('api.js 已加载, API:', typeof API !== 'undefined' ? '已定义' : '未定义');
+    </script>
+    <script src="js/chart.js"></script>
+    <script>
+        console.log('chart.js 已加载, ChartService:', typeof ChartService !== 'undefined' ? '已定义' : '未定义');
+    </script>
+    <script src="js/alert.js"></script>
+    <script>
+        console.log('alert.js 已加载, AlertService:', typeof AlertService !== 'undefined' ? '已定义' : '未定义');
+    </script>
+    <script src="js/video.js"></script>
+    <script>
+        console.log('video.js 已加载, VideoService:', typeof VideoService !== 'undefined' ? '已定义' : '未定义');
+    </script>
+    <script src="js/app.js"></script>
+    <script>
+        console.log('app.js 已加载');
+    </script>
+</body>
+</html>

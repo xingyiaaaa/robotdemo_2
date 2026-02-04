@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单测试</title>
+</head>
+<body>
+    <h1>简单测试页面</h1>
+    <div id="test-output"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded 事件触发');
+            
+            const output = document.getElementById('test-output');
+            output.innerHTML = '<p>DOMContentLoaded 事件已触发</p>';
+            
+            setTimeout(function() {
+                output.innerHTML += '<p>2秒后执行</p>';
+            }, 2000);
+            
+            setTimeout(function() {
+                output.innerHTML += '<p>尝试加载API...</p>';
+                
+                fetch('http://localhost:3000/api/health')
+                    .then(response => response.json())
+                    .then(data => {
+                        output.innerHTML += '<p>API连接成功: ' + JSON.stringify(data) + '</p>';
+                    })
+                    .catch(error => {
+                        output.innerHTML += '<p>API连接失败: ' + error.message + '</p>';
+                    });
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

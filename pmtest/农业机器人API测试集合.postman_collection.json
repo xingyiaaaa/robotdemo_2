@@ -1,0 +1,363 @@
+{
+  "info": {
+    "name": "农业机器人控制系统 API",
+    "description": "农业机器人远程控制系统的完整API测试集合",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "系统检查",
+      "item": [
+        {
+          "name": "健康检查",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "health"]
+            },
+            "description": "检查后端服务是否正常运行"
+          },
+          "response": []
+        }
+      ],
+      "description": "系统健康检查相关接口"
+    },
+    {
+      "name": "机器人状态",
+      "item": [
+        {
+          "name": "获取机器人状态",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/robot/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "status"]
+            },
+            "description": "获取机器人的实时状态，包括电量、速度、温度、GPS坐标"
+          },
+          "response": []
+        }
+      ],
+      "description": "机器人状态查询接口"
+    },
+    {
+      "name": "控制指令",
+      "item": [
+        {
+          "name": "前进",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"command\": \"forward\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/robot/control",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "control"]
+            },
+            "description": "控制机器人向前移动"
+          },
+          "response": []
+        },
+        {
+          "name": "后退",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"command\": \"backward\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/robot/control",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "control"]
+            },
+            "description": "控制机器人向后移动"
+          },
+          "response": []
+        },
+        {
+          "name": "左转",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"command\": \"left\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/robot/control",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "control"]
+            },
+            "description": "控制机器人向左转"
+          },
+          "response": []
+        },
+        {
+          "name": "右转",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"command\": \"right\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/robot/control",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "control"]
+            },
+            "description": "控制机器人向右转"
+          },
+          "response": []
+        },
+        {
+          "name": "停止",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"command\": \"stop\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/robot/control",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "control"]
+            },
+            "description": "停止机器人移动"
+          },
+          "response": []
+        }
+      ],
+      "description": "机器人方向控制指令"
+    },
+    {
+      "name": "作业操作",
+      "item": [
+        {
+          "name": "灌溉",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"irrigation\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/robot/control",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "control"]
+            },
+            "description": "执行灌溉作业"
+          },
+          "response": []
+        },
+        {
+          "name": "施肥",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"fertilize\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/robot/control",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "control"]
+            },
+            "description": "执行施肥作业"
+          },
+          "response": []
+        },
+        {
+          "name": "扫描检测",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"scan\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/robot/control",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "control"]
+            },
+            "description": "执行病虫害扫描检测"
+          },
+          "response": []
+        },
+        {
+          "name": "收割",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"harvest\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/robot/control",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "robot", "control"]
+            },
+            "description": "执行收割作业"
+          },
+          "response": []
+        }
+      ],
+      "description": "机器人作业操作指令"
+    },
+    {
+      "name": "传感器数据",
+      "item": [
+        {
+          "name": "获取传感器数据",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/sensors",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "sensors"]
+            },
+            "description": "获取环境传感器数据，包括土壤湿度、土壤温度、光照强度、空气湿度"
+          },
+          "response": []
+        }
+      ],
+      "description": "传感器数据查询接口"
+    },
+    {
+      "name": "任务管理",
+      "item": [
+        {
+          "name": "获取任务列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/tasks",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "tasks"]
+            },
+            "description": "获取所有任务及其状态和进度"
+          },
+          "response": []
+        }
+      ],
+      "description": "任务管理相关接口"
+    },
+    {
+      "name": "统计数据",
+      "item": [
+        {
+          "name": "获取作业统计",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/statistics",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "statistics"]
+            },
+            "description": "获取作业统计数据，包括已完成面积、总面积、完成进度"
+          },
+          "response": []
+        }
+      ],
+      "description": "作业统计数据接口"
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
