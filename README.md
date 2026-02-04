@@ -1,3 +1,5 @@
+[![GitHub repo size](https://img.shields.io/github/repo-size/xingyiaaaa/robotdemo_2)](https://github.com/xingyiaaaa/robotdemo_2) [![GitHub last commit](https://img.shields.io/github/last-commit/xingyiaaaa/robotdemo_2)](https://github.com/xingyiaaaa/robotdemo_2) [![GitHub stars](https://img.shields.io/github/stars/xingyiaaaa/robotdemo_2?style=flat)](https://github.com/xingyiaaaa/robotdemo_2)
+
 # 农业机器人控制系统
 
 前后端分离的农业机器人远程控制系统，支持实时监控、远程控制和数据可视化。
