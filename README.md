@@ -1,57 +1,42 @@
-[![GitHub repo size](https://img.shields.io/github/repo-size/xingyiaaaa/robotdemo_2)](https://github.com/xingyiaaaa/robotdemo_2) [![GitHub last commit](https://img.shields.io/github/last-commit/xingyiaaaa/robotdemo_2)](https://github.com/xingyiaaaa/robotdemo_2) [![GitHub stars](https://img.shields.io/github/stars/xingyiaaaa/robotdemo_2?style=flat)](https://github.com/xingyiaaaa/robotdemo_2)
+﻿[![GitHub repo size](https://img.shields.io/github/repo-size/xingyiaaaa/robotdemo_2)](https://github.com/xingyiaaaa/robotdemo_2) [![GitHub last commit](https://img.shields.io/github/last-commit/xingyiaaaa/robotdemo_2)](https://github.com/xingyiaaaa/robotdemo_2) [![GitHub stars](https://img.shields.io/github/stars/xingyiaaaa/robotdemo_2?style=flat)](https://github.com/xingyiaaaa/robotdemo_2)
 
-# 农业机器人控制系统
+# 鍐滀笟鏈哄櫒浜烘帶鍒剁郴缁?
+鍓嶅悗绔垎绂荤殑鍐滀笟鏈哄櫒浜鸿繙绋嬫帶鍒剁郴缁燂紝鏀寔瀹炴椂鐩戞帶銆佽繙绋嬫帶鍒跺拰鏁版嵁鍙鍖栥€?
+## 鉁?椤圭洰鐗圭偣
 
-前后端分离的农业机器人远程控制系统，支持实时监控、远程控制和数据可视化。
+- 馃幆 **鍓嶅悗绔垎绂?*: 娓呮櫚鐨勬灦鏋勮璁?- 馃攧 **瀹炴椂鏁版嵁**: 鑷姩杞鏇存柊鏈哄櫒浜虹姸鎬?- 馃幃 **杩滅▼鎺у埗**: 鏀寔鏂瑰悜鎺у埗鍜屼綔涓氭搷浣?- 馃搳 **鏁版嵁鍙鍖?*: 鐩磋鐨勪华琛ㄧ洏灞曠ず
+- 馃攲 **纭欢瀵规帴**: 棰勭暀MQTT鎺ュ彛妲戒綅
+- 馃И **瀹屾暣娴嬭瘯**: 鎻愪緵Postman娴嬭瘯闆嗗悎
 
-## ✨ 项目特点
-
-- 🎯 **前后端分离**: 清晰的架构设计
-- 🔄 **实时数据**: 自动轮询更新机器人状态
-- 🎮 **远程控制**: 支持方向控制和作业操作
-- 📊 **数据可视化**: 直观的仪表盘展示
-- 🔌 **硬件对接**: 预留MQTT接口槽位
-- 🧪 **完整测试**: 提供Postman测试集合
-
-## 📁 项目结构
+## 馃搧 椤圭洰缁撴瀯
 
 ```
 robotdemo12/
-├── frontend/                # 前端项目
-│   ├── index.html          # 主页面
-│   ├── debug.html          # 调试页面
-│   ├── test.html           # 测试页面
-│   ├── css/
-│   │   └── styles.css      # 样式文件
-│   └── js/
-│       ├── config.js       # API配置
-│       ├── api.js          # API接口层
-│       └── app.js          # 应用主逻辑
-│
-├── backend/                 # 后端项目
-│   ├── server.js           # 服务入口
-│   ├── package.json        # 依赖配置
-│   ├── routes/
-│   │   └── robot.js        # API路由
-│   ├── controllers/
-│   │   └── robotController.js  # 控制器
-│   └── data/
-│       └── mockData.js     # 模拟数据 (🔌 槽位)
-│
-├── docs/                    # 文档目录
-│   ├── POSTMAN使用指南.md  # Postman测试指南
-│   ├── 前端开发指南.md     # 前端开发文档
-│   ├── 后端开发指南.md     # 后端开发文档
-│   └── MQTT接口文档.md     # MQTT接口规范
-│
-├── 农业机器人API测试集合.postman_collection.json
-├── 农业机器人-本地环境.postman_environment.json
-└── README.md               # 本文件
-```
+鈹溾攢鈹€ frontend/                # 鍓嶇椤圭洰
+鈹?  鈹溾攢鈹€ index.html          # 涓婚〉闈?鈹?  鈹溾攢鈹€ debug.html          # 璋冭瘯椤甸潰
+鈹?  鈹溾攢鈹€ test.html           # 娴嬭瘯椤甸潰
+鈹?  鈹溾攢鈹€ css/
+鈹?  鈹?  鈹斺攢鈹€ styles.css      # 鏍峰紡鏂囦欢
+鈹?  鈹斺攢鈹€ js/
+鈹?      鈹溾攢鈹€ config.js       # API閰嶇疆
+鈹?      鈹溾攢鈹€ api.js          # API鎺ュ彛灞?鈹?      鈹斺攢鈹€ app.js          # 搴旂敤涓婚€昏緫
+鈹?鈹溾攢鈹€ backend/                 # 鍚庣椤圭洰
+鈹?  鈹溾攢鈹€ server.js           # 鏈嶅姟鍏ュ彛
+鈹?  鈹溾攢鈹€ package.json        # 渚濊禆閰嶇疆
+鈹?  鈹溾攢鈹€ routes/
+鈹?  鈹?  鈹斺攢鈹€ robot.js        # API璺敱
+鈹?  鈹溾攢鈹€ controllers/
+鈹?  鈹?  鈹斺攢鈹€ robotController.js  # 鎺у埗鍣?鈹?  鈹斺攢鈹€ data/
+鈹?      鈹斺攢鈹€ mockData.js     # 妯℃嫙鏁版嵁 (馃攲 妲戒綅)
+鈹?鈹溾攢鈹€ docs/                    # 鏂囨。鐩綍
+鈹?  鈹溾攢鈹€ POSTMAN浣跨敤鎸囧崡.md  # Postman娴嬭瘯鎸囧崡
+鈹?  鈹溾攢鈹€ 鍓嶇寮€鍙戞寚鍗?md     # 鍓嶇寮€鍙戞枃妗?鈹?  鈹溾攢鈹€ 鍚庣寮€鍙戞寚鍗?md     # 鍚庣寮€鍙戞枃妗?鈹?  鈹斺攢鈹€ MQTT鎺ュ彛鏂囨。.md     # MQTT鎺ュ彛瑙勮寖
+鈹?鈹溾攢鈹€ 鍐滀笟鏈哄櫒浜篈PI娴嬭瘯闆嗗悎.postman_collection.json
+鈹溾攢鈹€ 鍐滀笟鏈哄櫒浜?鏈湴鐜.postman_environment.json
+鈹斺攢鈹€ README.md               # 鏈枃浠?```
 
-## 🚀 快速启动
-
-### 1. 启动后端服务
+## 馃殌 蹇€熷惎鍔?
+### 1. 鍚姩鍚庣鏈嶅姟
 
 ```bash
 cd backend
@@ -59,88 +44,78 @@ npm install
 npm start
 ```
 
-服务将在 `http://localhost:3000` 启动。
-
-**验证服务**:
+鏈嶅姟灏嗗湪 `http://localhost:3000` 鍚姩銆?
+**楠岃瘉鏈嶅姟**:
 ```bash
 curl http://localhost:3000/api/health
 ```
 
-### 2. 启动前端
+### 2. 鍚姩鍓嶇
 
-直接用浏览器打开 `frontend/index.html`，或使用静态服务器：
-
+鐩存帴鐢ㄦ祻瑙堝櫒鎵撳紑 `frontend/index.html`锛屾垨浣跨敤闈欐€佹湇鍔″櫒锛?
 ```bash
 cd frontend
-# 使用Python
+# 浣跨敤Python
 python -m http.server 8080
-# 或使用Node
+# 鎴栦娇鐢∟ode
 npx serve .
 ```
 
-然后访问 `http://localhost:8080`
+鐒跺悗璁块棶 `http://localhost:8080`
 
-### 3. 使用Postman测试（可选）
+### 3. 浣跨敤Postman娴嬭瘯锛堝彲閫夛級
 
-1. 打开Postman
-2. 导入测试集合：
-   - `农业机器人API测试集合.postman_collection.json`
-   - `农业机器人-本地环境.postman_environment.json`
-3. 选择环境 "农业机器人 - 本地开发环境"
-4. 开始测试API
+1. 鎵撳紑Postman
+2. 瀵煎叆娴嬭瘯闆嗗悎锛?   - `鍐滀笟鏈哄櫒浜篈PI娴嬭瘯闆嗗悎.postman_collection.json`
+   - `鍐滀笟鏈哄櫒浜?鏈湴鐜.postman_environment.json`
+3. 閫夋嫨鐜 "鍐滀笟鏈哄櫒浜?- 鏈湴寮€鍙戠幆澧?
+4. 寮€濮嬫祴璇旳PI
 
-详细指南请查看：[docs/POSTMAN使用指南.md](docs/POSTMAN使用指南.md)
+璇︾粏鎸囧崡璇锋煡鐪嬶細[docs/POSTMAN浣跨敤鎸囧崡.md](docs/POSTMAN浣跨敤鎸囧崡.md)
 
-## 📊 功能说明
+## 馃搳 鍔熻兘璇存槑
 
-### 机器人控制
+### 鏈哄櫒浜烘帶鍒?
+- **鐘舵€佺洃鎺?*: 鐢甸噺銆侀€熷害銆佹俯搴︺€丟PS鍧愭爣
+- **浼犳劅鍣ㄦ暟鎹?*: 鍦熷￥婀垮害/娓╁害銆佸厜鐓у己搴︺€佺┖姘旀箍搴?- **鏂瑰悜鎺у埗**: 鍓嶈繘銆佸悗閫€銆佸乏杞€佸彸杞€佸仠姝?- **浣滀笟鎿嶄綔**: 鐏屾簤銆佹柦鑲ャ€佹壂鎻忋€佹敹鍓?
+### 浠诲姟绠＄悊
 
-- **状态监控**: 电量、速度、温度、GPS坐标
-- **传感器数据**: 土壤湿度/温度、光照强度、空气湿度
-- **方向控制**: 前进、后退、左转、右转、停止
-- **作业操作**: 灌溉、施肥、扫描、收割
+- 浠诲姟鍒楄〃鏄剧ず
+- 瀹炴椂杩涘害璺熻釜
+- 浣滀笟缁熻鍒嗘瀽
 
-### 任务管理
+### 绯荤粺鐩戞帶
 
-- 任务列表显示
-- 实时进度跟踪
-- 作业统计分析
+- 杩炴帴鐘舵€佹寚绀?- 瀹炴椂鏃ュ織璁板綍
+- 鎿嶄綔鍘嗗彶杩借釜
 
-### 系统监控
+## 馃攲 API鎺ュ彛
 
-- 连接状态指示
-- 实时日志记录
-- 操作历史追踪
-
-## 🔌 API接口
-
-| 方法 | 端点 | 说明 |
+| 鏂规硶 | 绔偣 | 璇存槑 |
 |------|------|------|
-| GET | `/api/health` | 健康检查 |
-| GET | `/api/robot/status` | 获取机器人状态 |
-| POST | `/api/robot/control` | 发送控制指令 |
-| GET | `/api/sensors` | 获取传感器数据 |
-| GET | `/api/tasks` | 获取任务列表 |
-| GET | `/api/statistics` | 获取作业统计 |
+| GET | `/api/health` | 鍋ュ悍妫€鏌?|
+| GET | `/api/robot/status` | 鑾峰彇鏈哄櫒浜虹姸鎬?|
+| POST | `/api/robot/control` | 鍙戦€佹帶鍒舵寚浠?|
+| GET | `/api/sensors` | 鑾峰彇浼犳劅鍣ㄦ暟鎹?|
+| GET | `/api/tasks` | 鑾峰彇浠诲姟鍒楄〃 |
+| GET | `/api/statistics` | 鑾峰彇浣滀笟缁熻 |
 
-### 请求示例
+### 璇锋眰绀轰緥
 
 ```bash
-# 获取机器人状态
-curl http://localhost:3000/api/robot/status
+# 鑾峰彇鏈哄櫒浜虹姸鎬?curl http://localhost:3000/api/robot/status
 
-# 发送移动指令
-curl -X POST http://localhost:3000/api/robot/control \
+# 鍙戦€佺Щ鍔ㄦ寚浠?curl -X POST http://localhost:3000/api/robot/control \
   -H "Content-Type: application/json" \
   -d '{"command": "forward"}'
 
-# 执行作业
+# 鎵ц浣滀笟
 curl -X POST http://localhost:3000/api/robot/control \
   -H "Content-Type: application/json" \
   -d '{"action": "irrigation"}'
 ```
 
-### 响应格式
+### 鍝嶅簲鏍煎紡
 
 ```json
 {
@@ -150,130 +125,105 @@ curl -X POST http://localhost:3000/api/robot/control \
 }
 ```
 
-## 🔧 对接真实硬件
+## 馃敡 瀵规帴鐪熷疄纭欢
 
-后端代码中标记了 `🔌 SLOT` 的位置是需要对接真实硬件的槽位。
-
-### 方式1: 直接修改数据源
-
-修改 `backend/data/mockData.js`：
-
+鍚庣浠ｇ爜涓爣璁颁簡 `馃攲 SLOT` 鐨勪綅缃槸闇€瑕佸鎺ョ湡瀹炵‖浠剁殑妲戒綅銆?
+### 鏂瑰紡1: 鐩存帴淇敼鏁版嵁婧?
+淇敼 `backend/data/mockData.js`锛?
 ```javascript
-// 🔌 SLOT: 从真实硬件读取
-function getRobotStatus() {
+// 馃攲 SLOT: 浠庣湡瀹炵‖浠惰鍙?function getRobotStatus() {
     return hardwareDriver.getStatus();
 }
 ```
 
-### 方式2: 使用MQTT协议（推荐）
+### 鏂瑰紡2: 浣跨敤MQTT鍗忚锛堟帹鑽愶級
 
-系统支持MQTT协议与硬件通信。详细说明请查看：[docs/MQTT接口文档.md](docs/MQTT接口文档.md)
+绯荤粺鏀寔MQTT鍗忚涓庣‖浠堕€氫俊銆傝缁嗚鏄庤鏌ョ湅锛歔docs/MQTT鎺ュ彛鏂囨。.md](docs/MQTT鎺ュ彛鏂囨。.md)
 
-**MQTT主题**:
-- `robot/status` - 机器人状态数据
-- `robot/sensors` - 传感器数据
-- `robot/control` - 控制指令（硬件需订阅）
-- `robot/tasks` - 任务列表
-- `robot/statistics` - 作业统计
+**MQTT涓婚**:
+- `robot/status` - 鏈哄櫒浜虹姸鎬佹暟鎹?- `robot/sensors` - 浼犳劅鍣ㄦ暟鎹?- `robot/control` - 鎺у埗鎸囦护锛堢‖浠堕渶璁㈤槄锛?- `robot/tasks` - 浠诲姟鍒楄〃
+- `robot/statistics` - 浣滀笟缁熻
 
-## 💻 技术栈
+## 馃捇 鎶€鏈爤
 
-### 前端
+### 鍓嶇
 - HTML5 + CSS3 + JavaScript
 - Fetch API
-- BEM命名规范
-- 响应式设计
-
-### 后端
+- BEM鍛藉悕瑙勮寖
+- 鍝嶅簲寮忚璁?
+### 鍚庣
 - Node.js + Express
 - RESTful API
-- CORS跨域支持
-- Morgan日志中间件
-- MQTT协议支持（可选）
+- CORS璺ㄥ煙鏀寔
+- Morgan鏃ュ織涓棿浠?- MQTT鍗忚鏀寔锛堝彲閫夛級
 
-## 📚 文档
+## 馃摎 鏂囨。
 
-- [Postman使用指南](docs/POSTMAN使用指南.md) - API测试完整教程
-- [前端开发指南](docs/前端开发指南.md) - 前端架构和调试
-- [后端开发指南](docs/后端开发指南.md) - 后端API和部署
-- [MQTT接口文档](docs/MQTT接口文档.md) - 硬件对接规范
+- [Postman浣跨敤鎸囧崡](docs/POSTMAN浣跨敤鎸囧崡.md) - API娴嬭瘯瀹屾暣鏁欑▼
+- [鍓嶇寮€鍙戞寚鍗梋(docs/鍓嶇寮€鍙戞寚鍗?md) - 鍓嶇鏋舵瀯鍜岃皟璇?- [鍚庣寮€鍙戞寚鍗梋(docs/鍚庣寮€鍙戞寚鍗?md) - 鍚庣API鍜岄儴缃?- [MQTT鎺ュ彛鏂囨。](docs/MQTT鎺ュ彛鏂囨。.md) - 纭欢瀵规帴瑙勮寖
 
-## 🐛 故障排查
+## 馃悰 鏁呴殰鎺掓煡
 
-### 后端连接失败
+### 鍚庣杩炴帴澶辫触
 
 ```bash
-# 检查后端是否运行
-netstat -ano | findstr :3000
+# 妫€鏌ュ悗绔槸鍚﹁繍琛?netstat -ano | findstr :3000
 
-# 重启后端服务
+# 閲嶅惎鍚庣鏈嶅姟
 cd backend
 npm start
 ```
 
-### 前端无法访问
+### 鍓嶇鏃犳硶璁块棶
 
 ```bash
-# 检查前端服务
-netstat -ano | findstr :8080
+# 妫€鏌ュ墠绔湇鍔?netstat -ano | findstr :8080
 
-# 使用浏览器直接打开
-# 或启动HTTP服务器
-cd frontend
+# 浣跨敤娴忚鍣ㄧ洿鎺ユ墦寮€
+# 鎴栧惎鍔℉TTP鏈嶅姟鍣?cd frontend
 python -m http.server 8080
 ```
 
-### 数据不更新
+### 鏁版嵁涓嶆洿鏂?
+1. 鎵撳紑娴忚鍣ㄥ紑鍙戣€呭伐鍏凤紙F12锛?2. 鏌ョ湅Console鏍囩椤电殑閿欒淇℃伅
+3. 鏌ョ湅Network鏍囩椤电殑API璇锋眰
+4. 纭鍚庣鏈嶅姟姝ｅ父杩愯
 
-1. 打开浏览器开发者工具（F12）
-2. 查看Console标签页的错误信息
-3. 查看Network标签页的API请求
-4. 确认后端服务正常运行
+鏇村闂璇锋煡鐪嬶細[docs/鍓嶇寮€鍙戞寚鍗?md#闂鎺掓煡](docs/鍓嶇寮€鍙戞寚鍗?md)
 
-更多问题请查看：[docs/前端开发指南.md#问题排查](docs/前端开发指南.md)
+## 馃幆 寮€鍙戝缓璁?
+### 鎺ㄨ崘宸ヤ綔娴佺▼
 
-## 🎯 开发建议
+1. **鍚姩鍚庣** 鈫?娴嬭瘯API鍋ュ悍妫€鏌?2. **浣跨敤Postman** 鈫?楠岃瘉鎵€鏈堿PI绔偣
+3. **鍚姩鍓嶇** 鈫?娴嬭瘯鍓嶅悗绔泦鎴?4. **娴忚鍣ㄨ皟璇?* 鈫?鏌ョ湅瀹炴椂鏁堟灉
 
-### 推荐工作流程
+### 浠ｇ爜瑙勮寖
 
-1. **启动后端** → 测试API健康检查
-2. **使用Postman** → 验证所有API端点
-3. **启动前端** → 测试前后端集成
-4. **浏览器调试** → 查看实时效果
+- 浣跨敤ES6+璇硶
+- 閬靛惊BEM鍛藉悕瑙勮寖
+- 淇濇寔妯″潡鍖栬璁?- 娣诲姞閫傚綋鐨勬敞閲?
+## 馃摝 閮ㄧ讲璇存槑
 
-### 代码规范
+### 寮€鍙戠幆澧?- 鍚庣: `npm start` (绔彛3000)
+- 鍓嶇: `python -m http.server 8080` (绔彛8080)
 
-- 使用ES6+语法
-- 遵循BEM命名规范
-- 保持模块化设计
-- 添加适当的注释
+### 鐢熶骇鐜
+- 鍚庣: 浣跨敤PM2绠＄悊杩涚▼
+- 鍓嶇: 浣跨敤Nginx鎵樼闈欐€佹枃浠?- 鍚敤HTTPS
+- 閰嶇疆鐜鍙橀噺
 
-## 📦 部署说明
+璇︾粏閮ㄧ讲鎸囧崡璇锋煡鐪嬶細[docs/鍚庣寮€鍙戞寚鍗?md#閮ㄧ讲璇存槑](docs/鍚庣寮€鍙戞寚鍗?md)
 
-### 开发环境
-- 后端: `npm start` (端口3000)
-- 前端: `python -m http.server 8080` (端口8080)
+## 馃 璐＄尞鎸囧崡
 
-### 生产环境
-- 后端: 使用PM2管理进程
-- 前端: 使用Nginx托管静态文件
-- 启用HTTPS
-- 配置环境变量
-
-详细部署指南请查看：[docs/后端开发指南.md#部署说明](docs/后端开发指南.md)
-
-## 🤝 贡献指南
-
-欢迎提交Issue和Pull Request！
-
-## 📄 许可证
-
+娆㈣繋鎻愪氦Issue鍜孭ull Request锛?
+## 馃搫 璁稿彲璇?
 MIT License
 
-## 📞 联系方式
+## 馃摓 鑱旂郴鏂瑰紡
 
-如有问题，请查看文档或联系技术支持。
-
+濡傛湁闂锛岃鏌ョ湅鏂囨。鎴栬仈绯绘妧鏈敮鎸併€?
 ---
 
-**农业机器人控制系统 v1.0**
+**鍐滀笟鏈哄櫒浜烘帶鍒剁郴缁?v1.0**
+
